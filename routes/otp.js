@@ -33,7 +33,7 @@ const SendEmail = async (data) => {
         var mailOptions = {
             from: 'officialagriccong@gmail.com',
             to: UserDetails.email,
-            subject: `OTP Verification - Agrico Ng`,
+            subject: `OTP Verification - Bridge Ng`,
             html: `
             
                     <body
