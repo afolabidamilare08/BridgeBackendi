@@ -25,13 +25,13 @@ const SendEmail = async (data) => {
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-              user: 'officialagriccong@gmail.com',
+              user: 'afolabidamilare08@gmail.com',
               pass: process.env.GMAIL_PASS
             }
           });
     
         var mailOptions = {
-            from: 'officialagriccong@gmail.com',
+            from: 'afolabidamilare08@gmail.com',
             to: UserDetails.email,
             subject: `OTP Verification - Bridge Ng`,
             html: `
