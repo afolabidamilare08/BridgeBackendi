@@ -43,7 +43,7 @@ const SendEmail = async (data) => {
                     "
                 >
                     <img
-                    src="https://res.cloudinary.com/drcn2xv3q/image/upload/v1667280524/css/agrico_rf8zve.png"
+                    src="https://res.cloudinary.com/drcn2xv3q/image/upload/v1670104109/d233b70d-c49d-45be-9425-ef9a322ade3d_ykiczi.jpg"
                     style="width: 150px; height: 150px; display: block; margin: 20px auto"
                     />
                     <div
