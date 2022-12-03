@@ -1,0 +1,81 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    padding: 40px;
+}
+
+.checked_image{
+    display: block;
+    margin: 130px auto;
+    width:100px;
+    height:100px;
+    margin-bottom: 30px;
+}
+
+
+.thank_message{
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.sub_message{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.order_detail{
+    margin-top: 50px;
+}
+
+
+.order_detail_top{
+    background-color: lightgray;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.order_detail_top_left{
+    width: 80%;
+}
+
+.order_detail_top_right{
+    width: 20%;
+}
+
+.order_detail_item{
+    padding: 10px;
+    font-size: 21px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* .order_detail_item_left{
+    width: 70%;
+} */
+
+.order_detail_item-right{
+    width: 20%;
+}
+
+.delivery_div{
+    display: flex;
+    margin-top: 40px;
+    justify-content: space-between;
+}
+
+.delivery_div-side{
+    width: 35%;
+    font-size: 18px;
+}
+
+.delivery_div-side-top{
+    font-weight: bold;
+    font-size: 25px;
+}
