@@ -100,10 +100,6 @@ app.use('/logistics_images', express.static('logistics_images'))
  
 
 
-// app.listen(process.env.LOCAL_HOST_PORT, () => {
-//   console.log("Backend Server is running")
-// })  
-
 const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}...`));
