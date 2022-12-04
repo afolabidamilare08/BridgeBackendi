@@ -90,7 +90,7 @@ router.put("/:id", verifyTokenAndAuthorization, FormidableVefification, async (r
           const result = await cloudinary.uploader.upload(imagetoupload, options);
           console.log(result.url);
           return result;
-        } catch (error) {
+        } catch (error) { 
           console.error(error);
           return error;
         }

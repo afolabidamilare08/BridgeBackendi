@@ -378,7 +378,7 @@ const DeleteUploadedImage = (data) => {
 
 // add products to shop ( only shop owner can do this request )
 
-router.post('/shop/:id/add_product', verifyToken, ShopOwnerVerification , FormidableVefification,savePictures, async (req, res) => {
+router.post('/shop/:id/add_product', verifyToken, ShopOwnerVerification , FormidableVefification ,savePictures, async (req, res) => {
 
                 const { error, value } = validateProduct({
                     ...req.data,
@@ -389,7 +389,6 @@ router.post('/shop/:id/add_product', verifyToken, ShopOwnerVerification , Formid
                     DeleteUploadedImage(req.data)
                     return res.status(403).json(error.details[0].message)
                 }
-
 
                 Category.findById(req.data.product_category)
                     .then((category) => {
