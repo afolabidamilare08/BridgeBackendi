@@ -45,6 +45,66 @@ const uploadToShopImages = multer({ storage: storageToShopImages })
 
 
 
+
+const savePictures = async ( req,res,next ) => {
+
+    const Images = []
+
+    if( req.data.product_images.length < 3 || req.data.product_images.length > 3 ){
+        return res.status(400).json("Only 3 images are allowed")
+    }
+
+    const uploadImage = async (imagetoupload) => {
+
+        // Use the uploaded file's name as the asset's public ID and 
+        // allow overwriting the asset with new versions
+        const options = {
+          use_filename: true,
+          unique_filename: false,
+          overwrite: true, 
+        };
+    
+        try {
+          // Upload the image
+          const result = await cloudinary.uploader.upload(imagetoupload, options);
+          console.log(result.url);
+          return result;
+        } catch (error) {
+          console.error(error);
+          return error;
+        }
+    };
+
+    const Forloop = async () => {
+        
+        for (let i = 0; i < req.data.product_images.length; i++) {
+
+            var image = req.data.product_images[i]
+            
+            const result = await uploadImage(image.filepath)
+            Images.push(result)
+        
+        }
+
+        return Images
+    }
+
+    const NewIMages = await Forloop()
+
+    req.Images = [...NewIMages]
+    next()
+
+}
+
+const DeleteUploadedImage = (data) => {
+
+    for (let k = 0; k < data.length; k++) {
+        cloudinary.uploader.destroy(data[k].public_id)
+    }
+
+}
+
+
 const deleteallpostedfiles = (files) => {
 
     if (files) {
@@ -313,67 +373,6 @@ router.get('/shop/:id/products', verifyToken, async (req, res) => {
     }
 
 })
-
-
-
-
-const savePictures = async ( req,res,next ) => {
-
-    const Images = []
-
-    if( req.data.product_images.length < 3 || req.data.product_images.length > 3 ){
-        return res.status(400).json("Only 3 images are allowed")
-    }
-
-    const uploadImage = async (imagetoupload) => {
-
-        // Use the uploaded file's name as the asset's public ID and 
-        // allow overwriting the asset with new versions
-        const options = {
-          use_filename: true,
-          unique_filename: false,
-          overwrite: true,
-        };
-    
-        try {
-          // Upload the image
-          const result = await cloudinary.uploader.upload(imagetoupload, options);
-          console.log(result.url);
-          return result;
-        } catch (error) {
-          console.error(error);
-          return error;
-        }
-    };
-
-    const Forloop = async () => {
-        
-        for (let i = 0; i < req.data.product_images.length; i++) {
-
-            var image = req.data.product_images[i]
-            
-            const result = await uploadImage(image.filepath)
-            Images.push(result)
-        
-        }
-
-        return Images
-    }
-
-    const NewIMages = await Forloop()
-
-    req.Images = [...NewIMages]
-    next()
-
-}
-
-const DeleteUploadedImage = (data) => {
-
-    for (let k = 0; k < data.length; k++) {
-        cloudinary.uploader.destroy(data[k].public_id)
-    }
-
-}
 
 
 // add products to shop ( only shop owner can do this request )
